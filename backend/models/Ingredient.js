@@ -5,7 +5,7 @@ const ingredientSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    expirationnDate: {
+    expirationDate: {
         type: Date,
         required: true
     } ,

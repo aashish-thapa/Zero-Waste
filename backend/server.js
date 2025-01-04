@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const ingredientRoutes = require('./routes/ingredients');
-
+const storageTipRoutes  = require('./routes/storageTipRoutes');
 // Get DB password from .env file
 const pw = process.env.DBPW;
 
@@ -31,6 +31,7 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 // Routes
 app.use('/api/ingredients', ingredientRoutes);
 
+app.use('api/tips', storageTipRoutes);
 // Default Route
 app.get('/', (req, res) => {
   res.send('Zero-Waste Kitchen Assistant Backend is running!');

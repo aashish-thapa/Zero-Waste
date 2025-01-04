@@ -17,17 +17,17 @@ router.post('/scan', async (req, res)=>{
   }
 });
 
-// Add a new ingredient to the database
 router.post('/', async (req, res) => {
   try {
-    const { name, expirationDate, userId } = req.body;
-    const ingredient = new Ingredient({ name, expirationDate, userId });
-    await ingredient.save();
-    res.status(201).json(ingredient);  // Send the created ingredient as response
+      const { name, expirationDate, userId } = req.body;
+      const ingredient = new Ingredient({ name, expirationDate, userId });
+      await ingredient.save();
+      res.status(201).json(ingredient);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+      res.status(400).json({ error: err.message });
   }
 });
+
 
 // Get all ingredients for a specific user
 router.get('/:userId', async (req, res) => {
