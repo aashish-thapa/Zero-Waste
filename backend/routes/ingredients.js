@@ -1,6 +1,21 @@
 const express = require('express');
+const {classifyImage} = require('../utils/tensorflowUtils')
 const Ingredient = require('../models/Ingredient');
 const router = express.Router();
+// Scan the image
+router.post('/scan', async (req, res)=>{
+  try{
+    const {ImagePath} = req.body;
+    if(!ImagePath) return res.status(400).json({error: 'Image path is required'});
+    const predictions = await classifyImage(ImagePath);
+    res.json({predictions});
+
+  }catch(err){
+    console.error(err);
+    res.status(500).json({error : 'Failed to process image'});
+
+  }
+});
 
 // Add a new ingredient to the database
 router.post('/', async (req, res) => {
