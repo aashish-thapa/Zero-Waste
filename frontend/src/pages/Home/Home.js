@@ -2,6 +2,7 @@ import React from 'react';
 import './Home.css';
 import Footer from '../../components/Footer/Footer';
 import { Link } from 'react-router-dom';
+import { Chatbox } from '../../components/chatbot/chatbot';
 
 const App = () => {
   const features = [
@@ -21,6 +22,7 @@ const App = () => {
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIqgL3V5FE46y1v3Gfyv7j2LZS2A0p7oYNCw&s',
     },
   ];
+  
 
   return (
     <div className="app">
@@ -43,6 +45,7 @@ const App = () => {
           </div>
         ))}
       </section>
+      <Chatbox/>
       <Footer />
     </div>
   );
