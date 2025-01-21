@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #28a745, #f8f9fa);
+    color: #333;
+    overflow-x: hidden;
+  }
+  
+  .camera-page {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .camera-header {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  
+  .camera-header h1 {
+    font-size: 2.5rem;
+    color: #28a745;
+    margin-bottom: 10px;
+  }
+  
+  .camera-header p {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    color: #555;
+  }
+  
+  .camera-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0;
+  }
+  
+  .webcam {
+    
+    width: 40%;
+    height: 100%;
+    border: 3px solid #28a745;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+  }
+  
+  .captured-container {
+    position: relative;
+  }
+  
+  .captured-image {
+    width: 90%;
+    max-width: 350px;
+    height: auto;
+    border: 3px solid #28a745;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .action-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .action-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0px 8px 20px rgba(40, 167, 69, 0.4);
+  }
+  
+  .capture-button {
+    background-color: #007bff;
+  }
+  
+  .capture-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .retake-button {
+    background-color: #dc3545;
+  }
+  
+  .retake-button:hover {
+    background-color: #b21f2d;
+  }
+  
+  @media (max-width: 768px) {
+    .camera-header h1 {
+      font-size: 2rem;
+    }
+  
+    .camera-header p {
+      font-size: 1rem;
+    }
+  
+    .webcam,
+    .captured-image {
+      max-width: 90%;
+    }
+  
+    .action-button {
+      font-size: 0.9rem;
+      padding: 10px 20px;
+    }
+  }
+  
