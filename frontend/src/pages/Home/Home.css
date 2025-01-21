@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  
+  .app {
+    text-align: center;
+  }
+  
+  .hero {
+    background: linear-gradient(135deg, #28a745, #218838);
+    color: white;
+    padding: 70px 20px;
+    border-radius: 10px;
+    margin: 20px;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .hero-description {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+  }
+  
+  .cta-button {
+    background-color: white;
+    color: #28a745;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #ddd;
+    transform: scale(1.1);
+  }
+  
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 20px;
+  }
+  
+  .feature-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .feature-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .feature-title {
+    font-size: 1.5rem;
+    color: #28a745;
+    margin: 15px;
+  }
+  
+  .feature-description {
+    font-size: 1rem;
+    margin: 0 15px 15px;
+    line-height: 1.5;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
