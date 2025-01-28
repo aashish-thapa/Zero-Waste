@@ -1,107 +1,132 @@
-/* General styles */
+/* CameraPage.css */
 body {
+  font-family: 'Roboto', sans-serif;
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #f9f9f9;
+  padding: 0;
+  background: #f7f7f7;
   color: #333;
-  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-/* Header */
 h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
   text-align: center;
-  color: #4CAF50;
-  margin: 20px 0;
+  margin-bottom: 1rem;
 }
 
-/* Camera container */
 .camera-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  margin: 20px auto;
+  padding: 1.5rem;
+  background: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
   max-width: 600px;
-  padding: 20px;
-  border: 2px solid #ddd;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
-/* Video feed */
 .camera-feed {
   width: 100%;
   height: auto;
-  border-radius: 10px;
-  border: 2px solid #4CAF50;
+  border-radius: 0.5rem;
+  border: 2px solid #eaeaea;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
 }
 
-/* Controls container */
 .controls {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #4CAF50;
+select, button {
+  font-size: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
   border: none;
-  border-radius: 5px;
+  background: #3498db;
+  color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #45a049;
+button:hover,
+select:hover {
+  background: #2980b9;
 }
 
 button:disabled {
-  background-color: #ccc;
+  background: #95a5a6;
   cursor: not-allowed;
 }
 
-/* Loading text */
-p {
-  text-align: center;
-  font-size: 18px;
-  font-style: italic;
-  color: #555;
+select {
+  appearance: none;
+  border: 1px solid #dcdcdc;
+  background: #ecf0f1;
+  color: #2c3e50;
 }
 
-/* Results container */
 .results {
-  margin-top: 20px;
-  padding: 20px;
-  border: 2px solid #ddd;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  text-align: center;
 }
 
 .results h2 {
-  color: #4CAF50;
-  text-align: center;
+  font-size: 1.5rem;
+  margin: 1rem 0 0.5rem;
 }
 
 .results ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
-.results li {
-  padding: 10px;
-  font-size: 16px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  text-align: center;
+.results ul li {
+  background: #ecf0f1;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.results li:nth-child(odd) {
-  background-color: #e8f5e9;
+.results a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.results a:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+button + button {
+  margin-left: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  button,
+  select {
+    width: 100%;
+  }
 }

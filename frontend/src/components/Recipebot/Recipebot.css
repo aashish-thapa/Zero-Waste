@@ -1,0 +1,108 @@
+/* CSS for the chatbox */
+
+.chat-button {
+    position: relative;
+    background-color: #252902;
+    color: white;
+    margin: 10%;
+    padding: 15px;
+    border: 1px solid rgb(74, 74, 156);
+    border-radius: 20%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  .chat-button:hover {
+    background-color: #111401;
+  }
+  
+  /* Chatbox Styles */
+  .chatbox {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 80%;
+    height: 400px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(129, 53, 53, 0.1);
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+  }
+  
+  /* Header */
+  .chat-header {
+    padding: 15px;
+    background-color: #0e5511;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .chat-close-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  /* Messages Section */
+  .messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+  }
+  
+  .message {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .message.user {
+    background-color: #d9f5d9;
+    align-self: flex-end;
+  }
+  
+  .message.bot {
+    background-color: #f0f0f0;
+    align-self: flex-start;
+  }
+  
+  /* Input Section */
+  .input-box {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: #f9f9f9;
+  }
+  
+  .input-field {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+  }
+  
+  .send-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .send-button:hover {
+    background-color: #45a049;
+  }
+  

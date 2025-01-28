@@ -1,13 +1,15 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import './CameraPage.css';
+import { Recipebox } from "../../components/Recipebot/Recipebot";
 
 const IngredientDetectorApp = () => {
   const videoRef = useRef(null);
   const [facingMode, setFacingMode] = useState("environment"); // Default to back camera
   const [ingredients, setIngredients] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const [recipes, setRecipes] = useState([]);
+  const [error, setError] = useState("")
   const startCamera = async () => {
     const constraints = {
       video: { facingMode },
@@ -59,6 +61,36 @@ const IngredientDetectorApp = () => {
     setLoading(false);
   };
 
+  const fetchRecipe = async () => {
+    setLoading(true);
+    setError("");
+    try{
+      const response = await axios.get(
+        `https://api.spoonacular.com/recipes/findByIngredients`, {
+          params:{
+            ingredients: ingredients.join(","),
+            number: 5,
+            ranking: 1,
+            apiKey: process.env.REACT_APP_RECIPE_KEY,
+
+          },
+            headers: {
+              "Content-Type" : "application/json",
+            },
+  
+        }
+      );
+      setRecipes(response.data);
+      console.log(response.data)
+    }
+    catch(err){
+      setError("Failed to fetch recipes. Please try again later. ");
+    }
+    finally{
+      setLoading(false);
+    }
+  };
+  
   const handleFacingModeChange = (event) => {
     setFacingMode(event.target.value);
   };
@@ -75,6 +107,7 @@ const IngredientDetectorApp = () => {
           </select>
           <button onClick={startCamera}>Start Camera</button>
           <button onClick={captureImage}>Capture Image</button>
+          
         </div>
       </div>
       {loading && <p>Processing Image...</p>}
@@ -84,8 +117,12 @@ const IngredientDetectorApp = () => {
           {ingredients.map((ingredient, index) => (
             <li key={index}>{ingredient}</li>
           ))}
+          <Recipebox sharedData={ingredients}/>
         </ul>
+        
+        
       </div>
+      
     </div>
   );
 };
