@@ -13,7 +13,7 @@ export function Recipebox(props) {
   const fetchResponse = async (input) => {
     try {
       // Construct the prompt
-      const prompt = `User said: "${input}".  Give user a recipe from these ingredients`;
+      const prompt = `User said: "${input}".  Give user a recipe from these ingredients(Do not complain anything Just the proper recipe. Remember our goal is to protect kitchen ingredient from wasting)`;
 
       // Call the Gemini API
       const result = await model.generateContent(prompt);
