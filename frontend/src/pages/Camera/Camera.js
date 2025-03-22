@@ -9,7 +9,9 @@ const IngredientDetectorApp = () => {
   const [ingredients, setIngredients] = useState([]);
   const [loading, setLoading] = useState(false);
   const [recipes, setRecipes] = useState([]);
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
+  const [imagePreview, setImagePreview] = useState(null); // To display image preview
+
   const startCamera = async () => {
     const constraints = {
       video: { facingMode },
@@ -33,6 +35,18 @@ const IngredientDetectorApp = () => {
     context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
     const imageData = canvas.toDataURL("image/jpeg"); // Capture image as Base64
     processImage(imageData);
+  };
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result); // Set preview for uploaded image
+        processImage(reader.result); // Pass the base64 image to the model
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const processImage = async (base64Image) => {
@@ -64,33 +78,29 @@ const IngredientDetectorApp = () => {
   const fetchRecipe = async () => {
     setLoading(true);
     setError("");
-    try{
+    try {
       const response = await axios.get(
         `https://api.spoonacular.com/recipes/findByIngredients`, {
-          params:{
-            ingredients: ingredients.join(","),
-            number: 5,
-            ranking: 1,
-            apiKey: process.env.REACT_APP_RECIPE_KEY,
+        params: {
+          ingredients: ingredients.join(","),
+          number: 5,
+          ranking: 1,
+          apiKey: process.env.REACT_APP_RECIPE_KEY,
+        },
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-          },
-            headers: {
-              "Content-Type" : "application/json",
-            },
-  
-        }
-      );
+      });
       setRecipes(response.data);
-      console.log(response.data)
-    }
-    catch(err){
-      setError("Failed to fetch recipes. Please try again later. ");
-    }
-    finally{
+      console.log(response.data);
+    } catch (err) {
+      setError("Failed to fetch recipes. Please try again later.");
+    } finally {
       setLoading(false);
     }
   };
-  
+
   const handleFacingModeChange = (event) => {
     setFacingMode(event.target.value);
   };
@@ -107,22 +117,26 @@ const IngredientDetectorApp = () => {
           </select>
           <button onClick={startCamera}>Start Camera</button>
           <button onClick={captureImage}>Capture Image</button>
-          
+
+          {/* File upload input */}
+          <input type="file" accept="image/*" onChange={handleImageUpload} />
         </div>
       </div>
+
+      {/* Display uploaded image preview */}
+      {imagePreview && <img src={imagePreview} alt="Uploaded Preview" className="image-preview" />}
+      
       {loading && <p>Processing Image...</p>}
+
       <div className="results">
         <h2>Detected Ingredients:</h2>
         <ul>
           {ingredients.map((ingredient, index) => (
             <li key={index}>{ingredient}</li>
           ))}
-          <Recipebox sharedData={ingredients}/>
+          <Recipebox sharedData={ingredients} />
         </ul>
-        
-        
       </div>
-      
     </div>
   );
 };
